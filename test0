@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#./gen 2 10 2 10 3> test_in/input0
+echo "TEST 0"
+./bin/D < test_in/input0 > test_out/out_good
+
+
+for f in bin/D*; do
+    suffix=${f##*/D}
+    "$f" < test_in/input0  > test_out/out$suffix
+    res=$(diff test_out/out_good test_out/out$suffix)
+    
+    if [ -n "$res" ]; then
+        echo "Difference found in D$suffix"
+    else
+        echo "Success for D$suffix"
+    fi
+done

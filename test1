@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "TEST 1: z=10, n=400"
+./bin/gen > test_in/input1 <<< "10 1000000000 400"
+./bin/D < test_in/input1 > test_out/out_good
+
+files="D D2 D3 Dt Do Do2"
+
+for f in $files; do
+    suffix=${f#D}
+    time "bin/$f" < test_in/input1  > test_out/out$suffix
+    res=$(diff test_out/out_good test_out/out$suffix)
+    
+    if [ -n "$res" ]; then
+        echo "Difference found in D$suffix"
+    else
+        echo "Success for D$suffix"
+    fi
+done
