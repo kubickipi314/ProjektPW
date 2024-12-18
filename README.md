@@ -1,7 +1,5 @@
 ## README
-
 ### Miniprojekt - Programowanie współbieżne
-
 **Projekt zawiera:** 
 - treść zadania z kursu ASD1 Świszcz
 - w `src/` rozwiązania problemu i generator losowych danych
